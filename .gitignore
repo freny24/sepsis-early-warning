@@ -5,11 +5,10 @@ __pycache__/
 .venv/
 venv/
 
-# Generated data + model artifacts (regenerate via run_pipeline.sh)
-backend/data/*.parquet
-backend/models/*.joblib
-backend/models/*.pt
-backend/models/*.json
+# NOTE: backend/data/*.parquet, backend/models/*.joblib|*.pt|*.json are
+# intentionally NOT ignored -- they're the trained model artifacts and
+# generated dataset. Committing them means the deployed API works
+# immediately without needing to retrain on the server.
 
 # Node / frontend
 frontend/node_modules/
