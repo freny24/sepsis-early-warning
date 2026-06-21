@@ -1,0 +1,144 @@
+:root {
+  /* --- Surface layers (dark clinical-monitor palette) --- */
+  --bg-base: #0a0e14;
+  --bg-panel: #0f1620;
+  --bg-panel-raised: #131c29;
+  --bg-inset: #0a0f17;
+  --border-subtle: #1d2935;
+  --border-default: #263545;
+  --border-strong: #344559;
+
+  /* --- Text --- */
+  --text-primary: #e8edf3;
+  --text-secondary: #93a4b8;
+  --text-tertiary: #5d7187;
+  --text-disabled: #3c4a5a;
+
+  /* --- Accent: clinical teal (primary brand / "system active") --- */
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: #1a8377;
+  --accent-teal-glow: rgba(45, 212, 191, 0.15);
+
+  /* --- Severity scale (used consistently for risk/alerts) --- */
+  --severity-low: #3b9e7a;
+  --severity-low-bg: rgba(59, 158, 122, 0.12);
+  --severity-moderate: #d4a72c;
+  --severity-moderate-bg: rgba(212, 167, 44, 0.12);
+  --severity-elevated: #e08a3c;
+  --severity-elevated-bg: rgba(224, 138, 60, 0.12);
+  --severity-critical: #e5484d;
+  --severity-critical-bg: rgba(229, 72, 77, 0.14);
+
+  /* --- Model identity colors (GB vs LSTM vs Ensemble, used in charts) --- */
+  --model-gb: #5b8def;
+  --model-lstm: #c081e8;
+  --model-ensemble: #2dd4bf;
+
+  /* --- Type --- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* --- Spacing scale --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* --- Radii --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* --- Shadows --- */
+  --shadow-panel: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -8px rgba(0,0,0,0.5);
+  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.5), 0 16px 40px -12px rgba(0,0,0,0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(45, 212, 191, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 85% 100%, rgba(91, 141, 239, 0.04) 0%, transparent 40%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--accent-teal-glow);
+  color: var(--text-primary);
+}
+
+/* Scrollbar styling for the dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 6px;
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Utility: subtle pulsing dot for "live" indicators */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+  animation: fade-in-up 0.4s ease-out;
+}
